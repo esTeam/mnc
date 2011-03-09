@@ -1,0 +1,69 @@
+﻿ 
+ <% content_for :admin_languages do %>   
+            
+    <%confirm_msg=nil%>
+	<%if ["edit","new","reorder_posts"].include?(request.parameters[:action])%>
+	          <%confirm_msg='במעבר לשפה אחרת, יאבדו כל העדכונים. אשר מעבר'%>
+	<%end%>
+	<%=language_navigation_bar(confirm_msg)%>
+ <%end%>
+  
+ <% content_for :admin_help do %>   
+     <div class="help">
+          <%= link_to "?", admin_help_url,:popup=>['admin_help', 'height=300,width=600, scrollbars=yes']%>
+	  </div>
+ <%end%> 
+      
+<% content_for :admin_side_menu do %>        
+         
+       <div id="admin_side_menu">
+            
+            <div id="admin_side_box">
+            
+	              <h2><%=mark_word('שלום')%>  <%= @current_user.login_name %></h2>
+	              <ul class="side_menu_list">
+    
+		              <li class="side_menu_item"><%= link_to 'יציאה', logout_url%></li>
+		              <li class="side_menu_item"><%= link_to "שינוי סיסמא", change_pass_url%></li>	
+                      <li class="side_menu_item">
+                          <%= link_to "ניהול תכנים", content_management_pages_url%></li>
+                      <li class="side_menu_item"><%= link_to "ניהול דפים", pages_url%></li>
+                      <li class="side_menu_item"><%= link_to "ניהול תמונות", mugshots_url%></li>
+                      <li class="side_menu_item">ניהול מאגר</li>
+                      <li class="side_menu_subitem" style="padding-right:15px;">
+                          <%= link_to "הצג מאגר", admin_show_db_url(:type=>"all")%></li>
+                      <li class="side_menu_subitem" style="padding-right:15px;">
+                          <%= link_to "הצג ישויות צפות", admin_show_db_url(:type=>"float")%></li>
+                      <li class="side_menu_subitem" style="padding-right:15px;">
+                          <%= link_to "תקן מאגר", admin_fix_database_url(:type=>"all")%></li>    
+	             </ul>
+	       </div>
+	
+	       <div id="admin_side_box">   
+	             <%= render :partial => '/admin/admin_search', 
+			                :locals => { :search_heading => mark_word('חיפוש באתר')} %>
+           </div>
+              
+           <div id="admin_side_box">
+                 <h2><%=mark_word('פותח')%> 
+                 על ידי
+				    <a href="http://www.esTeam.co.il" style="font-size:12px; font-style:oblique">esTeam </a>
+		         </h2>	 
+           </div>
+       </div>
+<%end%>
+          
+<% content_for :admin_content_by_side_menu do %>   
+      <div id="admin_content_by_side_menu"> 
+		     <%= yield :content %>
+	   </div>   
+<%end%>      
+       
+      
+
+ <%= render :file => '/layouts/admin_main' %>    
+           
+           
+
+
+

@@ -1,0 +1,20 @@
+﻿<div id="admin_show_doc">
+    
+	<% @doc= document%>
+
+	<div id="admin_title">   
+		<%= render :partial => '/documents/title', :object => @doc%>
+	</div>     
+
+	<p>
+		<%if document.abstract.nil? or document.abstract.blank?%>
+			<%unless document.posts.empty? %>
+			  <%= strip_html_tags(document.posts.first.content)[0..200] %>
+			<%end%>
+		<%else%>
+			<%= document.abstract%>
+		<%end%>
+		<%= link_to ">>>", page_document_url(document.page, document)%>
+	</p>
+</div>
+

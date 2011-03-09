@@ -1,0 +1,21 @@
+﻿<% content_for :content do %> 
+
+    <% if @doc.page.page_type == Page::GALLERY_PAGE_TYPE %>
+       <h1><%= mark_word('עידכון תמונה')%> <%=@post.name%> בגלריה   <%=@post.document.name%></h1>
+       <% partial = 'posts/form_post_gallery' %>
+    <%else%>
+       <h1><%= mark_word('עידכון פרק ')%> <%=@post.name%> במסמך   <%=@post.document.name%></h1>
+       <% partial = 'posts/form_post' %>
+    <%end%>
+    
+	<% form_for(@post, :url=> document_post_url(@doc)) do |f| %>
+		<%= f.error_messages %>
+        
+		<%= render partial,  :f => f %>
+	    <p>
+			<%=back_button%>
+		    <%= f.submit 'עדכן', :class => "submit" %>   
+	    </p>
+	<% end %>
+
+<% end %>

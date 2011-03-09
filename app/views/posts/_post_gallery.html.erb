@@ -1,0 +1,22 @@
+﻿    
+         <p class="admin_image" >
+		     <% unless post_gallery.mugshot.nil? %> 
+				<%= image_tag(post_gallery.mugshot.public_filename(:mini),
+                              :title=>"#{post_gallery.mugshot.alt_text}",
+                              :alt=>"#{post_gallery.mugshot.alt_text}") %>
+		     <% end %> 
+			        
+
+            <br > 
+                 <%unless post_publish_button(post_gallery).nil?%>
+                    <%=post_publish_button(post_gallery)%> |
+                <%end%>
+                <%= post_image_edit_button(post_gallery.document, post_gallery) %> |
+                <%= post_delete_button(post_gallery) %>
+                <% if (child_ind == "yes") %> 
+                      |
+                      <%= post_back_to_doc_button(post_gallery.document.page, post_gallery.document)%>
+               <%end%>   
+            </br>	
+        </p>
+         

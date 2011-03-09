@@ -1,0 +1,29 @@
+<% content_for :content do %>
+	
+	<div class="disclaimer">
+	  <h3><%= link_to @content.posts.first.title, fetch_page_by_name_url(:page_name =>'מחלת SMA')%> </h3>
+	  <p><%= @content.posts.first.content%></p>
+	</div>
+	
+	<div class="disclaimer">
+	   <h3><%= link_to @content.posts.second.title, fetch_page_by_name_url(:page_name => 'איבחון')%> </h3>
+	    <p><%= @content.posts.second.content%></p>
+	</div>
+	
+	<div class="icon"><%=image_tag('sma_why.jpg')%></div> 
+	<div class="icon"><%=image_tag('sma_how.jpg')%></div>
+	<div class="icon"><%=image_tag('sma_where.jpg')%></div>
+	
+	<div class="disclaimer">
+	   <h3><%= link_to @content.posts.third.title, fetch_page_by_name_url(:page_name =>'העמותה')%> </h3>
+	   <p><%= @content.posts.third.content%></p>
+	</div>
+	
+	<div class="disclaimer">
+	   <h3><%= link_to @content.posts.last.title, fetch_page_by_name_url(:page_name =>'תרומות')%> </h3>
+	   <p><%= @content.posts.last.content%></p>
+	</div>
+    
+    
+  
+  <%end%>

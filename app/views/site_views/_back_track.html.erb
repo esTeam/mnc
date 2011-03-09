@@ -1,0 +1,14 @@
+<div class="back_track">
+    
+	<% for page in @current_page.ancestors.reverse %>
+		<% unless (page.parent_id.nil? and !page.root_ind) %>
+	    	<%= link_to page.title, fetch_page_url(page) %> &gt;
+		<%end%>
+	<% end %>
+	<% @current_page_title = @current_page.title%>
+	<% unless params[:doc_id].nil? %>
+		<%= link_to @current_page.title, fetch_page_url(@current_page) %> &gt;
+		<% @current_page_title = ""%>
+	<%end%>
+	
+</div>

@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <title><%= @meta_title%></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<meta name="keywords" CONTENT="<%= @meta_keywords%>"/>
+	<meta name="description" CONTENT="<%= @meta_description%>"/>
+	
+	<%= stylesheet_link_tag 'layout' %>
+	<%= stylesheet_link_tag 'application' %>
+
+	<%= javascript_include_tag :all %>
+	
+	<body id="MNC" class=<%=@current_lang_abbr%> >   
+	  <div id="wrapper">
+		<div id="background_box"></div>
+		<div id="side_menu_box"></div>
+		<div id="header_box"></div>
+        
+		<%= yield(:header) or yield %>		
+		<%= yield(:side_menu) or yield %>
+		<%= yield(:content_by_side_menu) or yield %>
+			
+	    <div id="footer">
+            <span id="designer" style="float:left;">
+				<% unless @footer_content.nil? or  @footer_content.blank? %>
+				  <%= strip_html_tags(@footer_content.content)%>
+				<%end%>
+			 </span>
+			 <span id="admin_entry">
+			     <%= link_to "אדמיניסטרציה", login_url %> 
+			 </span>
+			 <div id="end_float"></div>
+	    </div>
+	  </div>
+    </body>
+</html>

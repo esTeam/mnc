@@ -1,0 +1,22 @@
+<% content_for :content do %>
+
+<% form_tag do %> 
+  <h2>כניסה למנהלי האתר</h2>
+  <table>
+  <tr> 
+    <td><label>שם משתמש:</label></td>
+    <td><%= text_field_tag 'login_name' %></td>
+  </tr> 
+  
+  <tr> 
+    <td><label>סיסמא:</label></td> 
+    <td><%= password_field_tag 'password' %></td>
+  </tr> 
+   
+  </table>
+  
+  <p><%= submit_tag 'כניסה', :class => "submit" %> </p> 
+ 
+<% end %> 
+
+<% end %> 

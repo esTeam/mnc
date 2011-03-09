@@ -1,0 +1,28 @@
+﻿<% content_for :content do %>
+  
+   <h1>ניהול תוכן לדפי האתר</h1>
+   
+    <div id="admin_content_menu">       
+         <table class="pages_tree">
+	 		<tr>
+			     <th>סודר</th>
+	             <th>עץ הדפים</th> 
+	             <th>כותרת דף</th> 
+			</tr>
+	         <%= render :partial => 'page', :collection => @pages, 
+						:locals => {:level => 0, :level_mark => ESTEAM_LEVEL_MARK} %>
+         </table>
+    </div>
+    <div id="end_float"></div>
+    <p>
+      <%= link_to "הוסף דף מסמך", 
+                  new_page_url(:page_type => Page::DOC_PAGE_TYPE) %> |
+      <%= link_to "הוסף גלריה", 
+                  new_page_url(:page_type => Page::GALLERY_PAGE_TYPE) %> |
+      <%= link_to "הוסף דף מסמכים",
+                  new_page_url(:page_type => Page::BLOG_PAGE_TYPE) %> |
+      <%= link_to "הוסף דף פעולה",
+                  new_page_url(:page_type => Page::ACTION_PAGE_TYPE) %> 
+   </p>
+<% end %>
+

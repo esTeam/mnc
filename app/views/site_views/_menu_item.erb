@@ -1,0 +1,12 @@
+<li id = "side_menu_item_<%=menu_item.id%>">
+
+	<%= display_menu_item(menu_item) %>
+	
+	<%unless menu_item.children.empty?%>
+		<ul id="children_<%=menu_item.id%>" style="display:none;">
+			<%= render :partial => "menu_item", :collection => menu_item.children %>
+		</ul>
+	<%end%>
+</li>
+
+

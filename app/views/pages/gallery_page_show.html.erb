@@ -1,0 +1,33 @@
+﻿<% content_for :content do %>
+
+	<h1><%=mark_word("דף")%>  <%=@page.name%></h1>
+
+	<p class="info"> <%=doc_admin_title(@page.documents.first)%> </p>
+
+	<%= render :partial => 'pages/page_header', :object =>@page  %>
+
+	<div id="admin_control_buttons">
+	     <p>
+	         <%= page_edit_button(@page) %>  
+	       | <%= page_delete_button(@page) %> 
+	       | <%=doc_add_post_gallery_button(@page.documents.first)%> 
+	       | <%=doc_reorder_posts_gallery_button(@page.documents.first)%>
+	     </p>
+	</div>
+    
+    
+    <div class="admin_image_list">
+
+         <% @page.documents.first.posts.each do |post| %>
+
+           
+               <%= render :partial => '/posts/post_gallery',
+                          :object => post,
+			              :locals => { :child_ind =>"no"} %>
+           
+         <% end -%>
+         <div id="end_float"></div>
+    </div>
+
+<%end%>
+

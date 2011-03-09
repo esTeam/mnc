@@ -1,0 +1,9 @@
+﻿<% content_for :content do %>
+
+  <%unless @page.nil?%>
+     <h3> כל המסמכים בדף:  <%=@page.name%></h3>
+  <%end%>
+  
+  <%= render :partial => @docs %>
+	
+<%end%> 

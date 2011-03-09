@@ -1,0 +1,76 @@
+﻿<% form_for @page do |f| %>
+  <%= f.error_messages %>
+
+  <%if @page_type == Page::ACTION_PAGE_TYPE%>
+	<% display2 = 'block'%>
+	<% display1 = 'none'%>
+  <%else%>
+	<% display1 = 'block'%>
+	<% display2 = 'none'%>
+  <%end%>
+
+  <div class="admin_box1">
+	  <h6> פרטי זיהוי ומיקום </h6>
+	  <% content_tag(:div, :id =>"page_form_location", :class =>"admin_frame",
+					 :style => "height:150px; background:#CFD6F6;") do %>
+   		<table>
+		  	  <tr>
+			    <td><label> שם <%=astrisk%></label></td>
+			    <td><%= f.text_field :name %></td>
+			  </tr>
+              
+		      <tr>
+		      <td><label> אבא </label></td>
+		        <td><%= f.collection_select :parent_id, 
+						Page.all(:conditions =>{:template =>Page::LEGAL_PARENTS},:order => "name"),
+						:id, :name, :include_blank => true %></td>
+		      </tr>
+
+		       <tr>
+		         <td><label> בתפריט עליון </label></td>
+		         <td><%= f.check_box :root_ind %></td>
+		       </tr>
+
+		       <tr>
+		         <td><label> סדר הופעה </label></td>
+		         <td><%= f.text_field :page_order %></td>
+		       </tr>
+
+		</table>
+	  <%end%>
+  </div>
+  <div class="admin_box2">
+ 	 <h6> הגדרות העריכה </h6> 
+	 <% content_tag(:div, :id =>"page_form_display", :class =>"admin_frame",
+					:style => "height:150px; background:#CFD6F6;") do %>
+		<table style="display:<%=display1%>">
+		    <tr>
+		      <td><label> תבנית הדף <%=astrisk%></label></td>
+              <td><%= f_select_template(f,@page_type) %></td>
+		    </tr>
+
+			<tr>
+			 <td><label> מסגרת הדף <%=astrisk%></label></td> 
+             <td><%= f_select_layout(f,@page_type)   %></td>
+		    </tr>
+
+		    <tr>
+		       <td><label>הרכב דף</label></td>
+		       <td><%= f.text_field :content %></td>
+		    </tr>
+     	</table>
+	 	<div style="display:<%=display2%>;">
+	         <label>כתובת URL <%=astrisk%></label><br />
+	         <%= f.text_field :url, :size=>46, :class=>"ltr_direction" %>
+	    </div>
+	 <%end%>
+  </div>
+  
+  <% f.fields_for :page_texts do |fnest| %> 
+     <%if fnest.object.language == I18n.locale.to_s%>
+          <%= render "form_page_texts",:f => fnest %>
+     <%end%>
+  <% end %>
+  
+  <p><%= f.submit "שמור", :class => "submit" %>    <%=back_button%>   </p>
+<% end %>

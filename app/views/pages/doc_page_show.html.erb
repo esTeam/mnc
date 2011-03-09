@@ -1,0 +1,22 @@
+﻿<% content_for :content do %>
+
+	<h1><%=mark_word("דף")%>  <%=@page.name%></h1>
+
+	<p class="info"> <%=doc_admin_title(@page.documents.first)%> </p>
+
+	<%= render :partial => 'pages/page_header', :object =>@page  %>
+
+	<div id="admin_control_buttons">
+	     <p>
+	         <%= page_edit_button(@page) %>  
+	       | <%= page_delete_button(@page) %> 
+	       | <%=doc_add_post_button(@page.documents.first)%> 
+	       | <%=doc_reorder_posts_button(@page.documents.first)%>
+	     </p>
+	</div>
+
+	<%= render :partial => @page.documents.first.posts,
+			   :locals => { :child_ind =>"no"} %>
+
+
+<%end%>	

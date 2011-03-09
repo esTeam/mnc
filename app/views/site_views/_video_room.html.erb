@@ -1,0 +1,27 @@
+<%content_for :content do%>
+<div id="video_room">
+	<% @doc = eval("@doc#{view[:page_id]}")%>
+	<%= stylesheet_link_tag 'video_room'%>	
+	   <div id="movie_thumbs"> 
+			<% i = 0 %>
+			<% @doc.each_published do |post| %>
+		       <%unless post.movie_thumb_url.nil? or post.name == "Filmography"%>
+				   <div class="movie_thumb" >
+					   <%= link_to_function image_tag(post.movie_thumb_url, :class => "movie"), 
+						"javascript:FlashEmbed('#{post.youtube_movie_embed}', 'movie_screen', 'flash_movie')"%>
+						<p class="movie"><%= link_to_function post.title, "javascript:FlashEmbed('#{post.youtube_movie_embed}', 
+						'movie_screen', 'flash_movie')"%></p> 
+				   </div>
+				   <div id="movie_text" style="display:none"> <%=post.content%></div>
+		       <%end%>
+			   <% i += 1 %>
+		    <%end%>
+	   </div>
+	   <div id="flash_movie" style="display:none">
+	     <div id="movie_screen"></div>		 
+		 <div id="close_button">
+			<%=link_to_function 'X', "javascript:FlashClose('flash_movie')" %>
+		 </div>
+	   </div>
+</div>
+<%end%>

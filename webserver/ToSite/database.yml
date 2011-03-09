@@ -1,0 +1,7 @@
+
+production:
+  adapter: mysql
+  database: mnconsul_production
+  username: mnconsul_esTeam
+  password: mnc25mnc
+  host: localhost

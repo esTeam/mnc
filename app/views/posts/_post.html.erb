@@ -1,0 +1,46 @@
+﻿<div id="admin_show_doc">         
+    
+         <h6><%=mark_word('פרק')%><%=h post.name %>
+             <%=mark_word(' / ')%><%=h post.title %></h6>
+             
+		 <p class="info"> <%=post_amdin_title(post)%> </p>
+         
+         <span id="picture">
+		     <% unless post.mugshot.nil? %> 
+				<%= image_tag(post.mugshot.public_filename(:thumb),
+                              :title=>"#{post.mugshot.alt_text}",
+                              :alt=>"#{post.mugshot.alt_text}") %>
+		     <% end %> 
+		 </span>		        
+
+         <%= post.content %>
+         
+         <div id="picture">
+         <% unless post.movie_thumb_url.nil? or post.movie_thumb_url.blank? %> 
+				<%= image_tag(post.movie_thumb_url) %>
+		 <% end %>  
+         <% unless post.movie_home_url.nil? or post.movie_home_url.blank? %> 
+         
+             <object width="380" height="300">
+                  <embed src="<%=post.youtube_movie_embed%>" name="ShowMovie" id="ShowMovie"
+                         type="application/x-shockwave-flash" 
+                         allowscriptaccess="always"
+                         allowfullscreen="true" width="380" height="300"></embed>
+             </object>
+         <% end %>
+         
+         </div>
+         
+         
+         <div id="admin_control_buttons" style="clear:both">
+            <%unless post_publish_button(post).nil?%>
+                    <%=post_publish_button(post)%> |
+            <%end%>
+            <%= post_edit_button(post.document, post) %> |
+            <%= post_delete_button(post) %>
+            <% if (child_ind == "yes") %> 
+                |
+               <%= post_back_to_doc_button(post.document.page, post.document)%>
+            <%end%>   
+        </div>	
+</div>

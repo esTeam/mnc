@@ -1,0 +1,15 @@
+<% special_tag(:div, :class => "side_box") do %>
+  <%= icon('calendar')%>
+  <h2><%= mark_word('ארכיון ')%> <%= link_to @current_page.title, viewer_url(:page_id => @current_page.id) %></h2>
+
+  <ul class="side_menu_list" style="clear:both;">
+		<% blog_archive.each do |doc| %>
+           <li class="menu_subitem">           
+              <% doc_date=Date.parse(doc.month_and_year) %>
+              <%= link_to date_localize_monthandyear(doc_date),
+                          viewer_url(:month_and_year => doc.month_and_year, :page_id => @current_page.id)%>
+           </li>           
+		<% end %>		
+  </ul>
+
+<%end%>

@@ -1,0 +1,9 @@
+
+<% content_for :admin_content_by_side_menu do %>
+    <div id="admin_login"> 
+		<%= yield :content %>
+    </div>
+	
+<%end%>
+
+<%= render :file => '/layouts/admin_main' %>

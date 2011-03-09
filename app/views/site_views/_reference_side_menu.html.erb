@@ -1,0 +1,20 @@
+
+	
+<h2><%= side_name(@current_page, params[:doc_id]) %></h2>
+  	
+<% unless @doc.nil? %>
+   <div id="side_menu_list">
+   <ul>
+		<% @doc.each_published do |post| %>
+				<%unless post.title.blank? or post.title.nil?%>
+						 <li class="side_menu_item">
+				               <%= link_to h(post.title), post.movie_home_url,:target => '_tab' %> 
+						 </li>
+				<%end%>
+		<%end%>	
+    </ul>
+    </div>
+ <%end%>
+		
+
+

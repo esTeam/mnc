@@ -1,0 +1,30 @@
+<% content_for :side_menu do %> 
+   <div id="side_menu">
+		<%= render :partial => "side_menu_tree" %>
+		
+<!--        <% special_tag(:div, :class => "side_box") do %>
+	       <%= render :file => '/layouts/application_body_header' %>
+           <div id="end_float"></div>
+	    <%end%>
+	
+		<%= render :partial => '/site_views/site_search' %>
+	
+		<%= render :partial => "side_partials"%> !-->
+   </div>
+<%end%>
+
+
+<% content_for :content_by_side_menu do %> 
+   <div id="content_by_side_menu">
+	 <div id="doc_page">
+	 	<%= render :partial => "back_track" %>
+		<%= yield :content%>
+	 </div>	
+   </div>
+<%end%>
+
+<% content_for :header do %>
+	<%= render :file => '/layouts/application_body_header' %>
+<%end%>
+
+<%= render :file => '/layouts/application' %>

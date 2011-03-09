@@ -1,0 +1,12 @@
+<% @side_partials.each do |view| %>
+  	<% special_tag(:div, :class => view[:div_id]) do %>
+		<%= icon(view[:page_name])%> 
+		<h2><%= link_to mark_word(view[:page_name]), fetch_page_url(view[:page_id])%></h2>
+				    
+	    <% marquee_tag(view[:div_id]) do %>
+			<%= render :partial => "#{view[:page_view]}", :locals => {:view => view}%>
+			<div id="end_float"></div>
+		<%end%>
+	<%end%>
+
+<%end%>

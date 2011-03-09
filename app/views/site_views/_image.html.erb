@@ -1,0 +1,4 @@
+<%unless image.mugshot.nil?%>
+	  <%= image_tag image.mugshot.public_filename(:gallery), {:id => "image-#{image_i}", :class => "image", 
+		:style => "display:none;", :title => image.mugshot.alt_text}%>
+<%end%>

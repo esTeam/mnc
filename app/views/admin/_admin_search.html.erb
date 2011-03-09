@@ -1,0 +1,17 @@
+<h2><%= search_heading %></h2>
+<div id="post_search">
+	<% form_tag "/admin/search", :method=>:get do %> 
+	  <p>	
+	    <label>מילת חיפוש:</label> 
+        <%= text_field_tag 'search_word', nil, :class => 'search_field' %> 
+	  </p>
+	  <p>
+	    <label>תגית חיפוש:</label> 
+        <%= text_field_tag 'search_tag', nil, :class => 'search_field' %> 
+	  </p>
+      
+      <p>
+	  <%= submit_tag 'חפש', :class => "submit" %>
+	  </p> 
+	<%end%>
+</div>

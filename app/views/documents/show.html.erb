@@ -1,0 +1,31 @@
+﻿<% content_for :content do %>
+	
+	<h1><%= mark_word('תוכן המסמך')%> <%=@doc.name%>
+        <%= mark_word(' / ')%> <%=@doc.title%></h1>
+    
+	<p class="info"> <%=doc_admin_title(@doc)%> </p>  
+	
+	<div id="admin_content_header">     
+             
+         <p> <%=doc_info_title(@doc)%> </p>
+         
+	     <p><label>תקציר:</label>
+	        <%= @doc.abstract %> 
+	     </p>
+    
+	     <p><label>תגיות:</label>
+	        <%=h @doc.tags %>
+	     </p>
+     </div>  
+   
+    <div id="admin_control_buttons">
+       <%= render :partial => '/documents/control_buttons', :object => @doc%>
+     | <%=doc_back_to_page_button(@doc.page)%>    
+    </div>
+
+    <%= render :partial => @doc.posts,
+               :locals => { :child_ind =>"no"} %>
+
+ 	
+<%end%>
+

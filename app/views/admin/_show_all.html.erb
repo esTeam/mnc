@@ -1,0 +1,85 @@
+﻿
+<h3>Database List</h3>
+<table >
+  <tr style="color:#green;font-weight:bold;">
+    <th>Table</th>   
+    <th>Name</th>
+    <th>Id</th>
+    <th>Parent</th>
+    <th>Language</th>
+	<th>Title</th>
+    <th>Order</th>
+  </tr>
+  <% @pages.each do |page| %>  
+       <tr>
+           <td>page</td>
+           <td><%=h page.name %></td>
+	       <td><%=h page.id %></td> 
+           <td><%unless page.parent_id.nil?%><%= "page:#{page.parent_id}"%><%end%></td>
+           <td></td>
+           <td></td>
+           <td><%=h page.page_order %></td>
+        </tr>
+        
+        <% page.page_texts.each do |pt| %> 
+            <tr>
+                <td>page_text</td>
+                <td></td>
+                <td><%=h pt.id %></td>
+                <td>page:<%=h pt.page_id %></td>
+	            <td><%=h pt.language %></td>
+	            <td><%=h pt.title%></td>
+                <td><%=h pt.publish_date%></td>
+           </tr>
+       <% end %>
+       
+       <% page.documents.each do |doc| %>    
+           <tr>
+              <td>document</td>
+              <td><%=h doc.name %></td> 
+              <td><%=h doc.id %></td>
+              <td>page:<%=h doc.page_id %></td>      
+              <td></td>
+              <td></td>
+              <td><%=h doc.publish_date%></td>
+           </tr>
+           
+           <% doc.document_texts.each do |dt| %>
+               <tr>
+                  <td>document_text</td>
+                  <td></td>
+                  <td><%=h dt.id %></td>
+                  <td>doc:<%=h dt.document_id %></td>
+	              <td><%=h dt.language %></td>
+	              <td><%=h dt.title%></td> 
+                 <td></td>
+               </tr>      
+           <% end %>
+           
+           <% doc.posts.each do |post| %>   
+               <tr>
+                  <td>post</td>
+                  <td><%=h post.name %></td>
+                  <td><%=h post.id %></td>
+                  <td>doc:<%=h post.document_id %></td> 
+	              <td></td>
+                  <td></td>
+                  <td><%=h post.location%></td>  
+              </tr>
+              
+              <% post.post_texts.each do |ptxt| %>
+                  <tr>
+                     <td>post_text</td>
+                     <td></td>
+                     <td><%=h ptxt.id %></td>
+                     <td>post:<%=h ptxt.post_id %></td>
+	                 <td><%=h ptxt.language %></td>
+	                 <td><%=h ptxt.title%></td> 
+                     <td></td>
+                 </tr>
+             <% end %>
+             
+          <% end %>
+       <% end %>
+    <% end %>
+</table>

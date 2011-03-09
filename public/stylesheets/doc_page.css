@@ -1,0 +1,82 @@
+/*                   				 */ 
+/* Document styles 					 */
+/*                					 */ 
+#doc_page {
+    position:absolute;
+	top:211px;	
+	width:670px;
+}
+.en #doc_page {
+	direction:ltr;
+    left:271px;
+	text-align:left;
+    
+}
+.he #doc_page {
+	direction:rtl;
+    right:271px;
+	text-align:right;
+}
+.brief {
+	border-bottom:2px solid #ededed;
+	margin:0 7px 3px 5px;
+	padding:0;
+}
+
+.brief p{
+	margin:0;
+}
+
+#end_float {
+	clear:both;
+}
+
+.info {
+	padding:3px 0px 1px 0;
+	margin:0;
+	color:#CBC2B4;
+	font-size:12px;
+	font-style:oblique;
+}
+
+#picture {
+	float:left;
+	margin:12px 10px 10px 0; 
+	background-color:inherit;
+}
+
+#doc_page #post_content_area, #blog #post_content_area {
+/*	border:2px solid #ededed;*/
+	padding:15px 35px 15px 35px;
+	margin-bottom:10px;
+/*	text-align:right;*/
+}
+
+#post_content_area {
+	text-align:justify;
+	padding:0;
+	font-size:12px;
+}
+
+#doc_header h4 a{
+	margin:0 0 5px 0;
+	font-size:20px;
+	color:#ACADB0;
+}
+
+h6 {
+font-size:16px;
+color:#711A1C;
+font-weight:bold;
+text-align:right;
+margin:0;
+border-bottom:2px solid #ededed;
+padding:2px 0px 2px 0;
+}
+
+.en h6 {
+	text-align:left;
+}
+h6 a:hover {
+	color:#666;
+}

@@ -1,0 +1,19 @@
+/*                   				 */ 
+/* Document styles 					 */
+/*                					 */ 
+#contactus {
+    position:absolute;
+	top:205px;	
+	width:670px;
+}
+.en #contactus {
+	direction:ltr;
+    left:290px;
+	text-align:left;
+    
+}
+.he #contactus {
+	direction:rtl;
+    right:290px;
+	text-align:right;
+}

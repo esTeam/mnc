@@ -1,0 +1,42 @@
+<div id="gallery_content">   
+	<div id="image_container" > 
+		<%#= progress_bar("stam",1.0, display_percentage_text = false) %>
+		<% i = 0 %>
+		<% @doc.each_published do |post| %>
+	       <%= render :partial => 'image', :object => post, :locals => {:image_i => i} %>
+		   <% i += 1 %>
+	    <%end%> 
+   </div>
+   <div class="bottom_separator" >
+		<span id = "prev_button">
+			<%= link_to_function "Prev", "javascript:GoPrevious();" %></span>
+		<span id = "next_button">
+			<%= link_to_function "Next", "javascript:GoNext();" %></span>
+		<span id = "play_button">
+			<%= link_to_function "   ► Play ", "javascript:StartSlideShow();" %></span>
+       	<span id = "pause_button" style="display:none;">
+			<%= link_to_function " || Pause", "javascript:Stop();" %></span>
+   </div>
+   <%# width = 0 %>
+   <%# @doc.each_published do |post| %>
+        <%# width += post.mugshot.width(:mini) + 10 %>
+      <%#end%> 
+   <% width = @doc.published_count * 85%>
+   <div id="scrolling">
+		<div id="smooth_scroller">
+			<div id="thumbs" class="scroller_container" style ="width:<%= width%>px;">
+				<% i = 0 %>
+				<% @doc.each_published do |post| %>
+					<%= render :partial => 'thumb', :object => post, :locals => {:image_i => i} %>
+					<% i += 1 %>
+				<%end%>
+			</div>
+		</div>
+	
+		<%=image_tag("/images/left_fold.png", :id => "scroll_left", 
+		   :onmouseover => "scroller.startScroll(-5, 0);", :onmouseout =>"scroller.stopScroll();")%>
+	    <%=image_tag("/images/right_fold.png", :id => "scroll_right", 
+	       :onmouseover => "scroller.startScroll(5, 0);", :onmouseout =>"scroller.stopScroll();")%> 
+
+   </div>
+</div>

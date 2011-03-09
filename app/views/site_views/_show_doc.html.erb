@@ -1,0 +1,27 @@
+<div id="blog">
+	<div id = "doc_header">
+		
+		<% @doc = eval("@doc#{view[:page_id]}")%>
+		
+		<%= render :partial => 'title', :object => @doc%>    
+		
+		<div style="<%=display(@doc.abstract)%>">
+			<p><label>תקציר:</label>
+			<%= @doc.abstract %> 
+			</p>
+		</div>
+    	
+		<div style="<%=display(@doc.tags)%>">
+			<p><label>תגיות:</label>
+			  <%=h @doc.tags %>
+			</p>   
+		</div>
+	</div>	
+	
+	<div id="post_content_area">
+	  <% @doc.each_published do |post| %>
+	     <%= render :partial => 'content', :object => post, :locals=> {:image_size=>"normal"} %>
+	  <%end%>
+	</div>
+</div>
+

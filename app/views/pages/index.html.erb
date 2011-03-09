@@ -1,0 +1,31 @@
+<% content_for :content do%>
+<% title "Pages" %>
+
+<table>
+  <tr>
+    <th>Parent Id</th>
+	<th>Id</th>
+	<th>Order</th>
+	<th>Root</th>
+    <th>Name</th>
+	<th>URL</th>
+    <th>Content</th>
+	<th>Template</th>
+	<th>Layout</th>
+  </tr>
+  <% for page in @pages %>
+    <tr>
+      <td><%=h page.parent_id %></td>
+	  <td><%=h page.id %></td>
+	  <td><%=h page.page_order %></td>
+	  <td><%=h page.root_ind %></td>
+      <td><%= link_to h(page.name),page_url(page) %> </td>
+	  <td><%=h page.url %></td>
+      <td><%=h page.content %></td>
+	  <td><%=h page.template %></td>
+	  <td><%=h page.layout %></td>	
+    </tr>
+  <% end %>
+</table>
+
+<%end%>

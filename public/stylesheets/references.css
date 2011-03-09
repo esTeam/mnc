@@ -1,0 +1,53 @@
+/*                   				 */ 
+/* References styles 			     */
+/*                					 */
+
+#reference_box {
+	position:absolute;
+	top:160px;
+    width: 683px;
+	height:545px;
+    background:url(images/map_background.png) no-repeat;
+/*	opacity:0.4;*/
+}
+
+#header_box, #header {
+	z-index:1;
+}
+
+.he #reference_box {
+    right:265px;
+}
+
+.en #reference_box {
+    left:265px;
+}
+
+#reference_map {
+	position:absolute;
+	top:280px;
+    width:600px;
+}
+
+.he #reference_map {
+    right:310px;
+}
+
+.en #reference_map {
+    left:310px;
+}
+ 
+#link_thumb {
+	float:left;
+	margin:0 10px 40px 10px;
+}
+
+.he #link_thumb {
+	float:right;
+}
+
+img.thumb {
+	width:auto;
+	border:2px solid #711a1c;
+}
+

@@ -1,0 +1,46 @@
+﻿
+
+<div class="page_text_fields" style="clear:both;">
+  
+  <div id="page_form_description" class="admin_frame" style="background:#F4EAD9;">
+  
+     <table>	  	  
+      <%= f.hidden_field :language %>
+      <tr>
+	     <td><label>כותרת דף <%=astrisk%></label></td>
+  	     <td><%= f.text_field :title %></td>
+	  </tr>
+	  
+      <tr>
+        <td><label>כותרת בדפדפן</label></td>
+        <td><%= f.text_field :meta_title %></td>
+      </tr>
+    </table>
+    
+      <p>
+         <label>מילות מפתח (להפריד בפסיקים)</label><br>
+         <%=f.text_area :meta_keywords, :rows =>2, :cols => 80%>
+      </p>
+  
+      <p>
+         <label>תאור מקוצר</label><br>
+         <%=f.text_area :meta_description, :rows => 4, :cols => 80%>
+      </p>
+  
+  
+       <%if @page_type == "מסמך"%> 
+         <table>	
+            <tr>
+	           <td><label>שם מחבר המסמך</label></td>
+	           <td><%= f.text_field :author %></td>
+            </tr>
+
+            <tr>
+               <td><label>תאריך פרסום המסמך</label></td>
+               <td><%= f_publish_date_select(f)%></td>
+            </tr>
+         </table>	
+       <% end %>
+ </div>
+ </div>
+  

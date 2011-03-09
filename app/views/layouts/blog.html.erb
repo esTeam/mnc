@@ -1,0 +1,29 @@
+<% content_for :side_menu do %>
+	<div id="right_menu">
+		<% unless params[:doc_id].nil?%>
+			<%= render :partial => "side_menu" %>
+		<%end%>
+
+		<%= render :partial => "blog_archive", :object => eval("@blog_archive#{@page_id}") %>
+	
+	    <% special_tag(:div, :class => "side_box") do %>
+	       <%= render :file => '/layouts/application_body_header' %>
+           <div id="end_float"></div>
+	    <%end%>
+	
+		<%= render :partial => '/site_views/site_search' %>
+	
+		<%= render :partial => "side_partials"%>
+	</div>
+<%end%>
+
+
+<% content_for :content_by_side_menu do %> 
+	<div id="content_by_right_menu">
+  		<%= render :partial => "back_track" %>
+		<h1><%=h @current_page_title %></h1>	
+		<%= yield :content%>
+	</div>	
+<%end%>
+
+<%= render :file => '/layouts/application' %>

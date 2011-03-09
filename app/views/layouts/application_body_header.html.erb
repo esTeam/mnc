@@ -1,0 +1,20 @@
+<div id="header">
+	<%=language_navigation_bar(nil)%>	
+	<div id="navigation_container">
+	      <ul>
+	      	<% for page in Page.roots %>
+	      	   <% if page.root_ind or page.root_ind.nil?%>
+				   <%name=page.title.lstrip()%>
+	               <%name=name.rstrip()%>
+	               <%if !@current_page.nil? and @current_page.title == name%>
+	                   <li id="selected"><%= link_to h(name), fetch_page_url(page)%></li>
+	               <%else%>
+			    	    <li><%= link_to h(name), fetch_page_url(page)%></li>   
+	               <%end%>
+			   <%end%>	
+	      	<% end %>
+	      </ul>	
+	</div>
+</div>
+
+ 

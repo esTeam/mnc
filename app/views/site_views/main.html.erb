@@ -1,0 +1,8 @@
+<% content_for :content do %>	
+
+	<% @main_partials.each do |view| %>
+			<% @page_id = view[:page_id]%>
+			<%= render :partial => "#{view[:page_view]}", :locals => {:view => view}%>
+	<%end%>
+	
+<%end%>

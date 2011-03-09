@@ -1,0 +1,29 @@
+xml.instruct! 
+xml.urlset "xmlns" => "http://www.sitemaps.org/schemas/sitemap/0.9" do
+
+    xml.url do
+        xml.loc         "http://www.giliadler.com"
+        xml.lastmod     w3c_date(Time.now)
+        xml.changefreq  "daily"
+        xml.priority    0.9
+    end
+   
+ 
+    @pages.each do |page|
+      xml.url do
+          xml.loc         url_for(:only_path => false,
+                              :controller => 'pages', :action => 'redirect', 
+                              :id => page)
+          xml.lastmod     w3c_date(page.updated_at)
+          xml.changefreq  "daily"
+          xml.priority    0.8
+      end
+    end
+    
+end
+
+
+
+
+
+

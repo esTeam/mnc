@@ -1,0 +1,17 @@
+#background_box {
+	position:relative;
+	float:left;
+    width:900px;
+	height:601px;
+	margin-top:145px;
+	margin-left:50px;
+	background:url(images/MNC_home.png) no-repeat;	
+}
+
+#side_menu_box {
+	height:0;
+	width:0;
+}
+.current_lang_link a,.current_lang_link a:visited {
+    color:rgb(86,7,26);
+}

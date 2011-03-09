@@ -1,0 +1,11 @@
+<h2><span class='first_word'> חדשות</span> העמותה</h2>
+<div class="news">
+	
+	<% @doc.each_published do |post| %>
+	<div class=news_entry>
+	   <p style="font-size:12px;padding:0;color:#D12965;margin:0;"><%= post.updated_at.strftime(" %B %d, %Y") %></p>
+	   <%= link_to post.title, viewer_url(:doc_id => @doc.id, :page_id => @doc.page_id)%> 
+	</div>	 
+	<%end%>
+	
+</div>

@@ -1,0 +1,70 @@
+﻿<% content_for :content do%>
+<% title @page.name, false %>
+
+<% unless @page.children.empty? %>
+<ul id="submenu">
+  <% for page in @page.children %>
+    <li><%= link_to h(page.name), page %></li>
+  <% end %>
+</ul>
+<% end %>
+
+<p>
+<% for page in @page.ancestors.reverse %>
+  <%= link_to h(page.name), page %> &gt;
+<% end %>
+</p>
+
+<h1><%=h @page.name %></h1>
+
+<%= simple_format @page.content %>
+
+<p>
+   <label>זיהוי רשומה:</label>
+   <%= @page.id %> 
+</p>
+<p>
+   <label>בתפריט עליון:</label>
+   <%= @page.root_ind %> 
+</p>
+
+<p>
+   <label>סדר הופעה:</label>
+   <%= @page.page_order%> 
+</p>
+
+<p>
+   <label>תבנית הדף:</label>
+   <%= @page.template%> 
+
+   <label>מסגרת הדף:</label>
+   <%= @page.layout %> 
+</p>
+
+<p>
+   <label>כתובת URL:</label>
+   <%= @page.url %> 
+</p>
+
+<p>
+   <label>תוכן:</label>
+   <%= @page.content %> 
+</p> 
+
+<h6> Meta Tags </h6>
+<p> <label>כותרת:</label>
+    <%= @page.meta_title %> 
+ </p>
+ <p> <label>מילות מפתח:</label>
+	  <%= @page.meta_keywords %> 
+  </p>
+  <p> <label>תאור:</label>
+	   <%= @page.meta_description %> 
+  </p>
+     
+<p>
+   <%= page_edit_button(@page) %>  
+|  <%= page_delete_button(@page) %> 
+|  <%= link_to "חזור לרשימה", pages_path %>
+</p>
+<%end%>

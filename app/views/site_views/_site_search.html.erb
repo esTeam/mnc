@@ -1,0 +1,20 @@
+<% special_tag(:div, :class => "side_box") do %>
+	<%=icon('search')%>
+	<h2><%=mark_word('חיפוש באתר')%></h2>
+	<div id="post_search" style="clear:both;">
+		<% form_tag(search_url) do %> 
+		  <p>	 
+	        <%= text_field_tag 'search_word', nil, :class => 'search_field' %> 
+			<label>מילת חיפוש:</label>
+		  </p>
+		  <p>
+	        <%= text_field_tag 'search_tag', nil, :class => 'search_field' %> 
+			<label>תגית חיפוש:</label> 
+		  </p>
+      
+	      <p>
+		  <%= submit_tag 'חפש', :class => "submit" %>
+		  </p> 
+		<%end%>
+	</div>
+<%end%>

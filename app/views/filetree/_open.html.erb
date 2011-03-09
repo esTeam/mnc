@@ -1,0 +1,32 @@
+
+<li class="expanded collapsed">
+
+   <%= link_to_remote h(@dir),
+            {:url=>filetree_close_url(:parent=>"#{@g_parent}",:dir=>"#{@dir}"),
+			:method => :get} %>
+   
+   <ul class="fileTree">
+       <% @content[0].each do |dir| %> 
+          <div id="<%=dir%>">
+              <li class="directory collapsed">
+                  <%= link_to_remote h(dir),
+                       {:url => filetree_open_url(:parent=>"#{@parent}",
+                                                  :dir=>"#{dir}"),
+			            :method => :get} %>    
+              </li>
+          </div>
+       <% end %> 
+   
+       <% @content[1].each do |file| %> 
+          <li class="file ext_<%=File.extname(file)[1..-1]%>">
+              <%=link_to_function file,
+                 "javascript:ReturnValueToPopup
+                    ('mugshot_url',
+                     '#{@domain_url}/#{@parent}/#{file}');" %>
+          </li>
+      
+       <% end %>
+   </ul>
+ 
+  </li>
+  

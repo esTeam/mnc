@@ -1,0 +1,60 @@
+<% for page in @current_page.ancestors%>
+	<% if page.template = "gallery" %>
+    	<% top_page = page%> 
+	<%end%>
+<% end %>
+
+<h2><%= top_page.title %></h2>
+
+<% unless top_page.children.empty? %>
+	<ul class = "side_menu_list">
+		<% for page in top_page.children %>
+		    <li>
+			  <%= link_to h(page.title), fetch_page_url(page), html_options = {:id => "side_menu_item_#{page.id}"} %>
+		    </li>
+			<% if @current_page == page %>		
+				<% for subpage in @current_page.children %>
+				<li class = "side_menu_subitem">
+					<%= link_to h(subpage.title), fetch_page_url(subpage) %>
+				</li>
+				<% end %>
+			<%end%>
+		<% end %>	   	
+	</ul>
+<% end %>
+<% unless top_page.children.empty? %>
+	<ul class = "side_menu_list">
+		<% for page in top_page.children %>
+		    <li>
+			  <%if page.template == "gallery"%>
+			  	<%= link_to h(page.title), fetch_page_url(page), html_options = {:id => "side_menu_item_#{page.id}"} %>
+			  <%else%>
+				<%= link_to_function h(page.title), "javascript:pageChildren(page)"%>
+			  <%end%>
+		    </li>
+			<% if page.is_ancestor_of(@current_page) == true%>		
+		   		<%= render :partial => 'gallery_menu_item', :collection => page.children, 
+						:locals => {:level => 0, :level_mark => LEVEL_MARK} %>
+			<%end%>
+		<% end %>	   	
+	</ul>
+<% end %>
+//		sc = document.getElementById("thumbs");
+//		sc.style.width = "<%= "#{width}px"%>";
+//  	Event.observe(window, 'load', document.write('Please wait'), false);
+
+<ul>
+<% unless menu_item.children.empty? %> 
+	<% if (display_type == "explore_branch" and menu_item.is_ancestor_of(page) == true) or display_type == "level_down"%>  
+	     <%display_type = " " unless display_type == "explore_branch"%>
+		 <%#level = level + 1 %>
+		 <% level_mark = level_mark + LEVEL_MARK%>
+	     <%= render :partial => 'site_views/menu_item', :collection => menu_item.children, 
+	   		  	:locals => {:level => level, :level_mark => level_mark, 
+						    :display_type => display_type, :page => page} %>
+	 <% end %>
+<%end%>
+</ul>
+
+<%= link_to_remote h(menu_item.title), {:url => reveal_children_url(menu_item), 
+	 :update => "side_menu_item_#{menu_item.id}", :position => :after, :method => :get}%>

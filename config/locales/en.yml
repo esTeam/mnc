@@ -1,0 +1,26 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+ date:
+    formats: 
+      monthandyear: "%B %Y"
+      fulldate: "%B %d, %Y"
+ main:
+   button:
+     submit: "Send"
+   contactus:
+     title: "Please fill in the form"
+   logo:
+   #  name_title: "Gili Adler Film Editor"
+     name_title: image_tag('/images/gili_title_en.gif') 
+     name: "Gili Adler"
+     title: "Film Editor"
+   errors:
+     page_in_development: "We are sorry - this page is under construction" 
+     page_not_exist: "The linked page does not exist"  
+ contact:
+   name: "Name"
+   email_address: "Email address"
+   subject: "Message subject"
+   body: "Message content"

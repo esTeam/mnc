@@ -1,0 +1,48 @@
+﻿  <p class='form_note'> שדות המסומנים ב * הם שדות חובה </p>
+  
+  <%= f.hidden_field  :name %>
+  
+  <%i=0%>
+  <% f.fields_for :post_texts do |fnest| %>
+  
+    <%if fnest.object.language == I18n.locale.to_s%>  
+            <%= fnest.hidden_field :language %>
+           
+            <p>
+            	<label>כותרת בשפה שנבחרה</label><br />
+	            <%= fnest.text_field :title %>
+            </p>   
+    <%end%>
+    <%i=i+1%>
+    
+  <% end %>
+    
+     <div id="PostImageBlock">
+     
+        <%= f.hidden_field  :mugshot_id %>
+        <%postId="PostImage"%>  
+        <%unless @post.mugshot.nil?%>
+           <%= image_tag(@post.mugshot.public_filename(:thumb),
+                        :id=>postId,
+                        :title=>"#{@post.mugshot.alt_text}",
+                        :alt=>"#{@post.mugshot.alt_text}")%> 
+         
+        <%else%>
+           <%= image_tag("",
+                      :id=>postId,
+                      :style=>"display:none;" )%> 
+           <%actionTitle="בחר תמונה"%>
+       <%end%> 
+       
+     </div>    
+     <%=link_to_function('בחר תמונה',"DoPopup('/mugshots/choose', 'WinChooseImage', 800, 600)") %> 
+       
+    
+  <p>
+    <label>קישור נילווה</label><br />
+    <%= f.text_field :movie_home_url,:size=> 50 %>
+  </p> 
+  
+  
+ 
+  

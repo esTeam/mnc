@@ -1,0 +1,27 @@
+<% javascript_tag do -%>
+	var prev_item = 'side_menu_item_<%=@current_page.id%>';
+	function HighlightMenuItem(curr_page) {
+		var item_id = 'side_menu_item_' + curr_page;
+		
+		var e = document.getElementById (prev_item);
+		e.className = "normal";
+		Element.show(prev_item);
+		
+		var e = document.getElementById (item_id);
+		e.className = "highlight";
+		Element.show(item_id);
+
+		prev_item = item_id
+		
+	}
+<%end%>
+
+<% top_page = @current_page.root%> 
+
+<h2><%= top_page.root.title %></h2>
+
+<% unless top_page.children.empty? %>
+	<ul class = "side_menu_list">	
+		 <%= render :partial => 'menu_item', :collection => top_page.children %>	
+	</ul>
+<% end %>

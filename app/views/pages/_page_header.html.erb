@@ -1,0 +1,72 @@
+<div id="admin_content_header">
+
+	<div class="admin_box2">
+		<h6> פרטי מיקום ועריכה</h6>  
+		<% content_tag(:div, :class =>"admin_frame") do %>
+			<p class="form_note"><%=page_show_location_message(@page)%></p>
+			<table >
+				
+				<tr style="<%=display(@page.template)%>">
+					<td><label>מיקום יחסי:</label></td>
+					<td class="text"><%= @page.page_order %></td>
+				</tr>
+				
+				<tr style="<%=display(@page.template)%>">
+					<td><label>תבנית הדף:</label></td>
+					<td class="text"><%= @page.template %></td>
+				</tr>
+
+				<tr style="<%=display(@page.layout)%>">
+					<td><label>מסגרת הדף:</label></td>   
+					<td class="text"><%= @page.layout   %></td>
+				</tr>
+
+				<tr style="<%=display(@page.content)%>">
+					<td><label>הרכב הדף:</label></td>
+					<td class="text"><%= @page.content %></td>
+				</tr>
+			</table>
+			<div style="<%=display(@page.url)%>">
+				<label>כתובת ברשת:</label>
+			 	<%= @page.url %>
+		    </div>
+		<%end%>
+	</div>	
+  
+
+	<h6 style="width:49%"> תאור הדף </h6> 
+	<div>
+        <p>
+			<label>כותרת</label>
+			<%= @page.title %>
+		</p>
+		<p>
+			<label>כותרת בדפדפן</label>
+			<%= @page.meta_title %>
+		</p>
+
+		<p>
+			<label>מילות מפתח</label><br>
+			<%= @page.meta_keywords%>
+		</p>
+
+		<p>
+			<label>תאור</label><br>
+			<%= @page.meta_description%>
+		</p>
+	</div>
+
+	<%if @page.page_type == Page::DOC_PAGE_TYPE %>
+		<div>
+			<p>
+				<label>מחבר המסמך</label>
+				<%= @page.author%> 
+			</p>
+			
+			<label>תאריך פירסום</label>
+				<%= date_localize_fulldate(@page.publish_date)%>
+			
+		</div>
+	<%end%>        
+	<div id="end_float"></div>
+</div>

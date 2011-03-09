@@ -1,0 +1,10 @@
+<%content_for :content do%>
+    <%= stylesheet_link_tag 'about' %>
+	<div id="about_gili">
+	  <% content_tag(:div, :class =>"about_text") do %>    
+		  <% content = @content.posts.first%>	
+		  <%= render :partial => 'content', :object => content, :locals => {:image_size => ""}%>		
+	  <%end%>
+	</div>
+   
+<%end%>

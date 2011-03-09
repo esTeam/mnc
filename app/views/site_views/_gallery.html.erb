@@ -1,0 +1,25 @@
+<%content_for :content do%>
+
+    <%= stylesheet_link_tag 'gallery'%>
+	<% @doc = eval("@doc#{view[:page_id]}")%>
+
+	<% javascript_tag do -%>	
+		var scroller = null;
+		window.onload =	function() {
+			scroller = new jsScroller("smooth_scroller", 554, 60);		
+			<%= remote_function(:url => refresh_page_url(view[:page_id]),
+				:method => :get,
+				:before => "Element.show('spinner')", 
+				:complete => "Element.hide('spinner')")%>;
+			StartGallery(<%= @doc.published_count%>);
+			};
+		function show_spinner() {
+			Element.hide('gallery_content');
+			Element.show('spinner');
+		}	
+	<%end%>
+	
+	<%= image_tag 'ajax-loader.gif', :id=>'spinner' %> 
+				
+	<div id="gallery"></div>
+<%end%>

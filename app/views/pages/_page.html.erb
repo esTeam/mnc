@@ -1,0 +1,24 @@
+  <tr>
+     <td>
+         <%if page.page_order%>
+              <%=page.page_order%>
+         <%else%>
+	 		  <%=0%>
+         <%end%>
+     </td>
+     <td style="text-indent:<%= level*20 %>px;">
+		<span class="level_mark"><%=level_mark%>  </span>
+		<%= link_to h(page.name), admin_show_page_url(page) %>
+	 </td>
+     <td><%=page.title%></td>
+  </tr>   
+     
+  <% unless page.children.empty? %>
+	 <% level = level + 1 %>
+	 <% level_mark = level_mark + ESTEAM_LEVEL_MARK%>
+     <%= render :partial => 'page', :collection => page.children, :locals => {:level => level, :level_mark => level_mark} %>
+  <% end %>  
+
+
+
+    

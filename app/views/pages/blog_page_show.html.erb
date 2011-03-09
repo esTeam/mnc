@@ -1,0 +1,17 @@
+﻿<% content_for :content do %>
+
+	<h1><%=mark_word('דף')%>  <%=@page.name%></h1>
+
+	<%= render :partial => 'pages/page_header', :object =>@page  %>
+	
+	<div id="end_float"></div>
+	
+	<div id="admin_control_buttons">
+	          <%= page_edit_button(@page) %>  
+	        | <%= page_delete_button(@page) %> 
+	        | <%= page_add_document_button(@page) %>
+	</div>
+    
+	<%= render :partial => @page.documents %>
+
+<%end%>	

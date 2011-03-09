@@ -1,0 +1,6 @@
+<%unless movie_thumb.movie_thumb_url.nil?%>
+	<div class="movie_thumb" >
+	  <%= link_to_function image_tag(movie_thumb.movie_thumb_url), 
+			"javascript:FlashEmbed('#{movie_thumb.youtube_movie_embed}', '#{div_id}')"%>
+	</div>
+<%end%>

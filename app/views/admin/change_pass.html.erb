@@ -1,0 +1,24 @@
+<% content_for :content do %>
+
+<h1>שינוי סיסמא</h1>
+
+<% form_tag do %> 
+  <table> 
+  <tr> 
+    <td><label>סיסמא נוכחית:</label></td> 
+    <td><%= password_field_tag 'old_password' %></td> 
+  </tr> 
+  <tr> 
+    <td><label>סיסמא חדשה:</label></td>
+    <td><%= password_field_tag 'password1' %></td>
+  </tr> 
+  <tr> 
+    <td><label>אימות סיסמא חדשה:</label></td>
+    <td><%= password_field_tag 'password2' %></td>
+  </tr>
+  </table> 
+  <p><%= submit_tag 'עדכן', :class => 'submit' %> </p> 
+<% end %> 
+
+
+<%end%>

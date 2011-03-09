@@ -1,0 +1,27 @@
+﻿
+<div class="document_text_fields">
+
+  <div class="form_note" style="clear:both">השדות הבאים תלויי שפה. הזן בהתאם לשפה שנבחרה.</div>
+  <div  class="admin_frame">
+       <%= f.hidden_field :language %>
+       <p>
+         <label>כותרת <%=astrisk%> </label><br>
+         <%= f.text_field :title %>
+       </p>
+  
+       <p>
+	      <label>תקציר </label><br>
+	      <%=f.text_area :abstract, :rows => 4, :cols => 80%>
+       </p>
+  
+       <p>
+	      <label>שם המחבר</label><br />
+	      <%= f.text_field :author %>
+       </p>
+
+       <p>
+          <label>תגיות לחיפוש</label><br>
+          <%= f.text_field :tags %>
+      </p>
+  </div>  
+</div>  

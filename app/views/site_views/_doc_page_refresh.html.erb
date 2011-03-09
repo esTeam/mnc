@@ -1,0 +1,6 @@
+<% content_tag(:div, :id => "post_content_area") do %>
+  <%= stylesheet_link_tag 'doc_page' %>	
+  <% @doc.each_published do |post| %>
+     <%= render :partial => 'content', :object => post, :locals=> {:image_size=>"normal"} %>
+  <%end%>
+<%end%>

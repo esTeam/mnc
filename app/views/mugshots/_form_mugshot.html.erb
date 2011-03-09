@@ -1,0 +1,31 @@
+﻿   
+   <%= error_messages_for :mugshot %>
+
+   <% form_for(:mugshot, :url =>mugshots_url(),
+                         :html=> { :multipart => true, :method => :post  }) do |f| -%>
+      
+        <table>
+          <tr>
+             <td>מהמחשב שלך</td>
+              <td><%=f.file_field :uploaded_data %></td>
+              <td style="font-size:20px;">או</td>
+              
+          
+             <td><%= button_to_function(
+                       "בחר מהאתר", 
+                       "DoPopup('/filetree/content?dir=uploads/Image',
+                                'WinFileBrowser',
+                                300, 400)")%> 
+                 <%=f.text_field  :url,:size=>40, :dir=>"ltr" %></td>
+          </tr>
+        
+        <tr>
+          <td>תאור צף</td>
+          <td><%= f.text_field :alt_text %></td>
+        </tr>
+      </table>
+    <p>
+       <%= submit_tag 'העלה', :class => 'submit' %> <%=back_button%>  
+     </p>
+  <% end %>
+<br />

@@ -1,0 +1,26 @@
+<% unless eval("@doc_brieves#{view[:page_id]}").nil?%>
+   <div>
+		<% eval("@doc_brieves#{view[:page_id]}").each do |brief|%>
+		<div class = "brief">
+			<% @doc = brief%>
+			<%= render :partial => 'title', :object => @doc%>
+		
+		   <p>
+			<%if brief.first_published_post.nil? %>
+			  <% desc = brief.abstract%>
+			<%else%>
+			  <% desc = doc_description(brief.first_published_post)[0..500] %>
+			<%end%>
+			
+			<%= desc %>
+		
+			<% if desc.length > 500%>
+				  <%= link_to "...עוד", viewer_url(:doc_id => @doc.id, :page_id => @doc.page_id)%>
+			<%end%>
+		   </p>
+		</div>
+		<div id="end_float"></div>
+		<% end %>		
+   </div>
+<%end%>
+	 

@@ -1,0 +1,79 @@
+/*                   				 */ 
+/* Video Room styles 			     */
+/*                					 */
+
+
+h1.video {
+	float:right;
+	text-align:right;
+	width:100%;
+	margin:100px 0px 10px 0;
+	color:#A19B9C;
+}
+
+#description {
+	display:block;
+	float:right;
+	text-align:right;
+	direction:ltr;
+}
+
+#flash_movie {
+	position:absolute;
+	top:-10px;
+	left:0px;
+	height:450px;
+	width:600px;
+	margin:0;
+	background:#CED0B6;
+	-webkit-box-shadow:10px 10px 5px #A19B9C;
+}
+#movie_screen {
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:5;
+}
+#movie_text {
+	position:absolute;
+	top:50px;
+	left:50px;
+}
+#close_button {
+	background:#666;
+	width:20px;
+	height:20px;
+	font-weight:bold;
+	font-size:13px;
+	position:absolute;
+	top:-5px;
+	left:-5px;
+	text-align:center;
+	z-index:10;
+	-webkit-box-shadow:5px 5px 5px #A19B9C;
+}
+#close_button a {
+	color:#fff;
+}
+#movie_thumbs {
+	width:520px;
+	margin:30px 0 0 60px;
+	float:left;
+}
+ 
+.movie_thumb {
+	float:left;
+	width:130px;
+	margin:0 30px 40px 0px;
+}
+img.movie {
+	width:auto;
+	border:5px solid silver; /*#E9EBCE;*/
+}
+p.movie {
+	text-align:center;
+	margin:5px 0 0 0;
+	position:relative;
+	width:130px;
+	clear:both;
+}

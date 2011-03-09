@@ -1,0 +1,17 @@
+﻿
+   <div class="post_text_fields">
+        <div class="form_note" style="clear:both">השדות הבאים תלויי שפה. הזן בהתאם לשפה שנבחרה.</div>
+        
+        <div  class="admin_frame">
+            <%= f.hidden_field :language %>
+            <p>
+            	<label>כותרת </label><br />
+	            <%= f.text_field :title %>
+            </p> 
+            <p>
+	        	<label>התוכן </label><br/>
+	            <%@post_text = f.object%>			
+				<%= ckeditor_textarea(:post_text, :content, :toolbar => 'Full', :width => '97%', :height => '300px') %>
+            </p>
+        </div> 
+   </div>  

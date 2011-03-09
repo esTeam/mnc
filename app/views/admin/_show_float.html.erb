@@ -1,0 +1,110 @@
+﻿
+<h3>Unrelated Entities List</h3>
+
+<table>
+  <tr style="color:#green;font-weight:bold;">
+    <th>Table</th>
+	<th>Id</th>
+    <th>Parent</th>
+    <th>Name</th>
+	<th>Title</th>
+  </tr>
+  
+  <%float=false%>
+  <% @page_texts.each do |ptxt| %>  
+    <%if ptxt.page.nil? %>
+       <%float=true%>
+       <tr>
+         <td>Page_text</td>
+	     <td><%=h ptxt.id %></td>
+         <td>page: <%=h ptxt.page_id %></td>
+	     <td><%=h ptxt.name %></td>
+	     <td></td>   
+       </tr>
+    <%end%>
+  <% end %>
+  <%unless float%>
+      <tr>
+         <td>All page_texts are related</td>
+      </tr>
+  <%end%>
+  
+  <%float=false%>
+  <% @docs.each do |doc| %>
+    <%if doc.page.nil? %>
+       <%float=true%>
+       <tr>
+         <td>Document</td>
+	     <td><%=h doc.id %></td>
+         <td>page: <%=h doc.page_id %></td>
+	     <td><%=h doc.name %></td>
+	     <td></td>   
+      </tr>
+    <%end%>
+  <% end %>
+  <%unless float%>
+        <tr>
+         <td>All documents are related</td>
+        </tr>
+  <%end%>
+  
+  <%float=false%>
+  <% @doc_texts.each do |dt| %> 
+   <%if dt.document.nil? %>
+      <%float=true%>
+      <tr>
+        <td>Document_text</td>
+	    <td><%=h dt.id %></td>
+        <td>Doc: <%=h dt.document_id %></td>
+	    <td><%=h dt.name %></td>
+	    <td><%=h dt.title%></td>  
+      </tr>
+   <%end%>
+ <% end %>
+ <%unless float%>
+      <tr>
+         <td>All document_texts are related</td>
+      </tr>
+  <%end%>
+  
+  <%float=false%>
+  <% @posts.each do |post| %> 
+   <%if post.document.nil? %>
+      <%float=true%>
+      <tr>
+        <td>Post</td>
+	    <td><%=h post.id %></td>
+        <td>Doc: <%=h post.document_id %></td>
+	    <td><%=h post.name %></td>
+	    <td><%=h post.title%></td>  
+        <td></td>  
+    </tr>
+   <% end %>
+  <% end %>
+  <%unless float%>
+      <tr>
+         <td>All posts are related</td>
+      </tr>
+  <% end %>
+  
+  <%float=false%>
+  <% @post_texts.each do |pt| %> 
+   <%if pt.post.nil? %>
+      <%float=true%>
+      <tr>
+        <td>Post_text</td>
+	    <td><%=h pt.id %></td>
+        <td>Doc: <%=h pt.post_id %></td>
+	    <td><%=h pt.name %></td>
+	    <td><%=h pt.title%></td>  
+        <td></td>  
+    </tr>
+   <% end %>
+  <% end %>
+  <%unless float%>
+      <tr>
+         <td>All post_texts are related</td>
+      </tr>
+   <% end %>
+</table>
+      

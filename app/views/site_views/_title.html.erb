@@ -1,0 +1,18 @@
+<h4>
+      <%= link_to @doc.title, viewer_url(:doc_id => @doc.id, :page_id => @doc.page_id)%>
+</h4>
+
+<p class="info">
+      <%unless @doc.author.nil? or @doc.author.blank?%>
+              <% doc_info_string= "נכתב על ידי  #{@doc.author} " %>
+      <%end%>
+      <%unless @doc.publish_date.nil?%>
+               <%unless doc_info_string.nil?%>
+                        <%doc_info_string+= " / "%>
+               <%else%>
+                       <%doc_info_string= ""%>   
+               <%end%>
+               <%doc_info_string+=" פורסם ב-  #{date_localize_fulldate(@doc.publish_date)}"%> 
+	  <%end%>
+      <%=  doc_info_string%> 
+ </p>

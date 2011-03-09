@@ -1,0 +1,32 @@
+<% unless @current_page.children.empty? and (@doc.nil? or @doc.published_count < 2 ) %>
+  
+  <% special_tag(:div, :class => "no_side_box") do %>
+	
+	<h2><%= side_name(@current_page, params[:doc_id]) %></h2>
+  	
+	<ul class = "side_menu_list">
+	
+		 <% unless @doc.nil? or @doc.published_count < 2 %>
+			  <ul class = "side_menu_list">
+					<% @doc.each_published do |post| %>
+				        <%unless post.title.blank? or post.title.nil?%>
+						   <li class="side_menu_subitem">
+				               <a href="#<%=post.title%>"> <%=post.title%> </a> 
+						   </li>
+					    <%end%>
+					<%end%>	
+			  </ul>  
+		<%end%>
+		
+		<% for page in @current_page.children %>
+		<li class="side_menu_item">
+			<%= link_to h(page.title), fetch_page_url(page) %>
+		</li>
+
+		<% end %>
+		
+	</ul>
+  <%end%>
+
+<% end %>
+

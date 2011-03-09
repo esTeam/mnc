@@ -1,0 +1,7 @@
+--- 
+gem: --remote --gen-rdoc --run-tests
+gemhome: /home/mnconsul/gems
+gempath: 
+- /home/mnconsul/gems
+- /home/mnconsul/ruby/gems
+rdoc: --inline-source --line-numbers

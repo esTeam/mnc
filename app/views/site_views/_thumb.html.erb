@@ -1,0 +1,5 @@
+<%unless thumb.mugshot.nil?%>
+	<div class="thumb" >
+	  <%= link_to_function image_tag(thumb.mugshot.public_filename(:mini)), "javascript:ShowImage(#{image_i})"%>
+	</div>
+<%end%>

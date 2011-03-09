@@ -1,0 +1,9 @@
+
+
+   <li class="directory collapsed">
+      <%= link_to_remote h(@dir), {:url => filetree_open_url(:parent=>"#{@parent}",:dir=>"#{@dir}"),
+			:method => :get} %>
+                                 
+   </li>
+ 
+  

@@ -1,0 +1,49 @@
+#Gili {
+	background:rgb(205,191,178); /*#EDE3D2; /*D7CFD0;*/
+ }
+
+#header {
+	margin-top:120px;
+}
+#logo_title {
+    color:rgb(86,7,26);
+}
+
+#navigation_container li a:hover {
+	color:#EDE3D2; 
+	background:#B0A9AA;
+}
+.he #navigation_container {
+	font-family:Narkisim, Arial;
+}
+#about_gili {
+	 float:right;
+     height:418px;
+     width:314px;
+     background:url(images/about_gili.gif) no-repeat;
+     position:relative;
+	 margin:100px 10px 0 0;
+	 margin-bottom:100px;
+}
+.about_text {
+	position:absolute;
+	top:95px;
+	right:52px;
+	width:350px;
+	padding-top:45px;
+	padding-right:45px;
+  	text-align:left;
+    font-weight:bold;
+    color:rgb(86,7,26);
+    font-size:14px;
+	direction:ltr;
+}
+.he .about_text {
+	text-align:right;
+	direction:rtl;
+}
+#picture {
+	float:right;
+    margin:-45px -45px 10px 10px;
+    
+}

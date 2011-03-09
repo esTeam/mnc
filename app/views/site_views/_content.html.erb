@@ -1,0 +1,15 @@
+<span style="<%=display(content.title)%>">
+	<h6> <a name="<%=content.title%>"><%=content.title%> </a></h6>
+</span>
+
+<%unless content.mugshot.nil?%>
+	<span id="picture">
+<!-- image_size is passed as :locals with blank for original size, "normal" or "thumb" or "mini" or "gallery" -->    
+	  <%= image_tag(content.mugshot.public_filename(image_size),
+					:title=>"#{content.mugshot.alt_text}",
+                     :alt=>"#{content.mugshot.alt_text}")%>
+	</span>
+<%end%>
+
+<%= content.content%>
+<div id="end_float"></div>

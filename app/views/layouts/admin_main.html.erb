@@ -1,0 +1,62 @@
+﻿ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	
+    <%= stylesheet_link_tag 'admin' %>
+	<%= javascript_include_tag :all %>
+ 	<%= javascript_include_tag :ckeditor %> 
+	
+	<body id="esTeam" class=<%=@current_lang_abbr%> > 
+    
+	  <div id="wrapper">
+		
+         <div id="admin_header">
+            <div id="logo">
+               <h1> מערכת ניהול </h1>
+               <h1> <%=ESTEAM_SITE_NAME%> </h1>
+            </div>
+            
+            <div id="navigation_container">
+               <ul>
+        	       <% for page in Page.roots %>
+        	          <% if page.root_ind or page.root_ind.nil?%>
+					        <%name=page.title.lstrip()%>
+	                        <%name=name.rstrip()%>
+
+	                        <%if !@current_page.nil? and @current_page.name == name%>
+	                             <li id="selected"><%= link_to h(name), fetch_page_url(page)%></li>
+	                        <%else%>
+	 		    	             <li><%= link_to h(name), fetch_page_url(page)%></li>   
+	                        <%end%>     
+		              <%end%>	
+                   <% end %>
+	           </ul>	
+	        </div>
+            
+            <%= yield(:admin_languages) %>
+            
+            <%= yield(:admin_help)%>
+          
+         </div> 
+         
+         <%= display_flashes %>
+         
+         <div id="admin_page">
+         
+            <%= yield(:admin_side_menu)%>
+     
+		    <%= yield :admin_content_by_side_menu %>
+        </div>
+       
+      </div>
+      
+    </body>
+</html>
+
+     
+           
+           
+
+
+

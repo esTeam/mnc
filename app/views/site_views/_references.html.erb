@@ -1,0 +1,22 @@
+<%content_for :content do%>
+
+<%= stylesheet_link_tag 'references'%> 
+<div id="reference_box"></div>	
+
+<div id="reference_map">
+    
+	<% @doc = eval("@doc#{view[:page_id]}")%>
+	
+			<% i = 0 %>
+			<% @doc.each_published do |post| %>
+		       <%unless post.movie_thumb_url.nil? %>
+				   <div id="link_thumb" >
+					   <%= link_to image_tag(post.mugshot.public_filename("thumb"), :class => "thumb"),
+                                   post.movie_home_url,
+                                   :target => '_tab'%>
+				   </div>
+		       <%end%>
+			   <% i += 1 %>
+		    <%end%>
+</div>
+<%end%>

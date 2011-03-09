@@ -1,0 +1,24 @@
+﻿<% content_for :content do %> 
+
+<h3>התמונות במאגר</h3>
+
+<div class="admin_image_list">
+
+     <% for mugshot in @mugshots -%>
+
+        <p class="admin_image" >
+          <%= image_tag(mugshot.public_filename(:mini))%>
+          <br> 
+             <%=link_to('הצג', mugshot_url(mugshot))%> |
+             <%=link_to('מחק', mugshot, :confirm => 'אשר מחיקה',:method => :delete)%> 
+        </p>
+     <% end -%>
+     <div id="end_float"></div>
+</div>
+<%=link_to('העלה תמונה למאגר', new_mugshot_url())%> 
+<%end%>
+
+
+
+
+

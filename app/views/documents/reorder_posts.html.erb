@@ -1,0 +1,33 @@
+﻿<% content_for :content do %>
+
+  <h1><%= mark_word('סדר הפרקים במסמך')%>  <%=@doc.title%></h1>
+  <%form_for(@doc, :url=> page_document_url(@doc.page, @doc, :reorder_ind=>"true")) do |f| %>
+  	<table>
+	    <thead>
+	      <tr>
+	        <th>שם הפרק</th>
+	        <th>מיקום</th>
+	      </tr>
+	    </thead>
+
+	    <tbody>
+	         <%= f.error_messages %>
+	         <% f.fields_for :posts do |bl| %>
+
+	         <tr>
+                 <%if @doc.page.page_type == Page::GALLERY_PAGE_TYPE %>
+                      <%post=bl.object%>
+                      <td><%=image_tag(post.mugshot.public_filename(:mini))%></td>
+                 <%else%>
+	    	          <td><%= bl.text_field :title, :disabled=>"true" %></td>
+                 <%end%>
+		         <td><%= bl.text_field :location, :size=>1 %></td>        
+	         </tr>
+
+	         <% end %>
+	    </tbody>
+	  </table>
+	  <p><%=back_button%> <%= f.submit 'עדכן', :class => "submit" %></p>
+  <%end%>
+<%end%>
+

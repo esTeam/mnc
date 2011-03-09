@@ -1,0 +1,14 @@
+<% content_for :right_menu do %> 
+  <div id="right_menu">	
+	<%= render :partial => 'site_search'%>
+  </div>
+<%end%>
+
+<% content_for :content_by_right_menu do %> 
+  <div id="content_by_right_menu">
+	<h1><%=h @current_page.title %></h1>
+	<%= yield :content%>
+  </div>
+<%end%> 
+
+<%= render :file => '/layouts/application' %>

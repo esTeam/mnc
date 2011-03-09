@@ -1,0 +1,17 @@
+﻿
+<% content_for :content do %> 
+
+   <h1><%= mark_word('הוספת מסמך בדף')%>  <%=@page.name%></h1>
+
+   <% form_for(@doc, :url=>page_documents_url(@page)) do |f| %>
+      <%= f.error_messages %>
+    
+      <%= render  "documents/form_document", :f => f %>
+  
+      <p>
+	     <%=back_button%>
+         <%= f.submit 'שמור', :class => "submit" %>
+      </p>
+   <% end %>
+
+<% end %>

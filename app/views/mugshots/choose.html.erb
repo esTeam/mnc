@@ -1,0 +1,49 @@
+﻿
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>חלון בחירה והעלאת תמונות</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	
+    <%= javascript_include_tag  'esTeam' %>
+	<%= javascript_include_tag :all %>
+    <script type="text/javascript">
+        function ReturnChosenImage(imageFileName,imageRowId) {
+            window.opener.document.getElementById('PostImageBlock').style.display="block";
+            window.opener.document.getElementById('PostImage').src=imageFileName;
+            window.opener.document.getElementById('PostImage').style.display="block";
+            window.opener.document.getElementById('post_mugshot_id').value=imageRowId;
+            window.close();
+            }
+    </script>
+    
+    <%= stylesheet_link_tag 'admin_popup' %>
+</head>
+
+<body id="popup">
+  <%if @mugshot.errors.size == 0%>
+     
+       <h3>בחר תמונה מהמאגר או העלה תמונה חדשה</h3>
+
+       <div class="admin_image_list">
+            <% for mugshot in @mugshots %>
+            
+              <div class="admin_image" >
+                   <%= image_tag(mugshot.public_filename(:mini),
+                        :title=>"#{mugshot.alt_text}",
+                        :alt=>"#{mugshot.alt_text}",
+                        :onmouseover => "this.style.cursor='pointer';",
+                        :onclick=>"ReturnChosenImage('#{mugshot.public_filename(:thumb)}','#{mugshot.id}')")%>  
+             </div>
+           <% end %>
+           <div id="end_float"></div>
+       </div>
+  <%end%>
+  
+  <div id="load_new_image">
+  
+       <%= render :partial => 'form_mugshot' %>
+  </div>
+</body>
+</html>

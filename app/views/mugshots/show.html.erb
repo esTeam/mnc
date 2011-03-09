@@ -1,0 +1,43 @@
+﻿<% content_for :content do %> 
+<table >
+  <tr style="color:#green;font-weight:bold;">      
+    <th>שם</th>
+    <th>שם מלא</th>
+    <th>סוג</th>
+    <th>גודל</th>
+    <th>מידות</th>
+	<th>טקסט צף</th>
+  </tr>
+ 
+  <tr>
+    <td><%=h @mugshot.filename %></td>
+    <td><%=h @mugshot.public_filename %></td>
+    <td><%=h @mugshot.content_type %></td>          
+    <td><%=h @mugshot.size %></td>
+    <td><%=h @mugshot.width %> על <%=h @mugshot.height %></td>
+    <td><%=h @mugshot.alt_text %></td>
+  </tr>
+  <% @thumbs.each do |tm| %>      
+   <tr>
+    <td><%=h tm.thumbnail %></td>
+    <td><%=h tm.public_filename %></td>
+    <td><%=h tm.content_type %></td>          
+    <td><%=h tm.size %></td>
+    <td><%=h tm.width %> על <%=h tm.height %></td>
+    <td></td>
+   </tr>
+  <%end%>
+
+</table>
+
+<p>
+<img src="<%=@mugshot.public_filename(:mini)%>"  title="<%=@mugshot.alt_text%>" /></br>
+<img src="<%=@mugshot.public_filename(:thumb)%>"  title="<%=@mugshot.alt_text%>" /></br>
+<img src="<%=@mugshot.public_filename(:normal)%>"  title="<%=@mugshot.alt_text%>" /></br>
+<img src="<%=@mugshot.public_filename(:gallery)%>"  title="<%=@mugshot.alt_text%>" /></br>
+<img src="<%=@mugshot.public_filename%>"  title="<%=@mugshot.alt_text%>" />
+</p>
+
+<%end%>
+
+

@@ -1,0 +1,23 @@
+﻿<% content_for :content do %> 
+    
+    <% if @doc.page.page_type == Page::GALLERY_PAGE_TYPE %>
+       <h1><%= mark_word('הוספת תמונה בגלריה')%>  <%=@doc.name%></h1>
+       <% partial = 'posts/form_post_gallery' %>
+    <%else%>
+       <h1><%= mark_word('הוספת פרק במסמך')%>  <%=@doc.name%></h1>
+       <% partial = 'posts/form_post' %>
+    <%end%>
+    
+	<% form_for(@post, :url=> document_posts_url(@doc)) do |f| %>
+	   <%= f.error_messages %>              
+       
+	   <%= render partial, :f => f %>
+
+	   <p>
+	    <%=back_button%>
+	    <%= f.submit 'שמור', :class => "submit" %>
+	   </p>
+	<% end %>
+
+<% end %>
+  

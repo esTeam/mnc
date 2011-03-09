@@ -1,0 +1,17 @@
+﻿<% content_for :content do %> 
+
+<h1><%= mark_word('עידכון מסמך ')%> <%=@doc.name%> בדף   <%=@doc.page.name%></h1>
+
+<% form_for(@doc) do |f| %>
+  <%= f.error_messages %>
+  
+  
+  <%= render "documents/form_document", :f => f %>
+  
+  <p>
+	<%=back_button%>
+    <%= f.submit 'עדכן', :class => "submit" %>
+  </p>
+<% end %>
+
+<% end %>

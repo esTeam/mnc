@@ -1,0 +1,25 @@
+<% content_for :side_menu do %>
+
+	<% unless params[:doc_id].nil?%>
+		<%= render :partial => "side_menu" %>
+	<%end%>
+
+	<%= render :partial => "blog_archive", :object => eval("@blog_archive#{@page_id}") %>
+	
+	<%= render :partial => '/site_views/site_search' %>
+
+<%end%>
+
+
+<% content_for :content_by_side_menu do %> 
+
+  	<%= render :partial => "back_track" %>
+
+	<h1><%=h @current_page.name %></h1>
+	
+	<%= yield :content%>
+	
+<%end%>
+
+
+<%= render :file => '/layouts/application' %>

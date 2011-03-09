@@ -1,0 +1,9 @@
+﻿<% content_for :content do %>
+
+  <%if params[:type] == "all"%>
+     <%= render :partial =>'show_all'%>
+  <%else%>
+     <%= render :partial =>'show_float'%>
+  <%end%>
+        
+<% end %>

@@ -1,0 +1,19 @@
+﻿<% content_for :content do %> 
+
+   <p><%=back_button%></p>
+   
+   <%= error_messages_for :mugshot %>
+
+   <% form_for(:mugshot, :url =>mugshot_url(@mugshot),
+                         :html=> { :multipart => true, :method => :put }) do |f| -%>
+                             
+      <p>החלף את התמונה<br/>
+         <%= image_tag @mugshot.public_filename(:thumb) %>
+         בתמונה <%= f.file_field :uploaded_data %>
+      </p>
+
+    <p>
+       <%= submit_tag 'עדכן', :class => 'submit' %>
+     </p>
+  <% end %>
+<%end%>
